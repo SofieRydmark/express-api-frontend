@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Provider } from 'react-redux'
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { library } from './reducers/library';
+import { StartPage } from './components/StartPage'
 
-function App() {
+export const App = () => {
+  const reducer = combineReducers({
+    library: library.reducer
+  });
+
+  const store = configureStore({
+    reducer
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <StartPage />
+    </Provider>
   );
 }
 
-export default App;
+
