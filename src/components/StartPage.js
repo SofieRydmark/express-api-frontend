@@ -43,46 +43,65 @@ if (loading) {
   return (
     <main>
     {books &&
-        <section>
-            <div className="start">
-                <h1>Hello and welcome to The Little Library. </h1>
-                <p>Search for a book <br/>
-                Or select an author/authors from dropdown-menu to display the books they have written</p>
-            </div>
+    <>
+            <header>
+                <h1>Welcome to The Little Library. </h1>
+                <p>Search for a book, <br/>
+                or select an author/authors from the dropdown-menu <br/> 
+                to display the books they have written.</p>
+            </header>
 
-            <div>
+        <section className="filter">
+            <div className="inputWrapper">
                 <form onSubmit={bookSearchInput}>
                         <label hidden htmlFor="bookSearchInput">Booksearch</label>
                         <input
                             id="bookSearchInput"
                             required
                             type="text"
-                            placeholder="search book, ex Harry Potter"
+                            placeholder="Search book, ex Harry Potter"
                             value={input}
                             onChange={(event) => setInput(event.target.value)} />
-                        <button type="submit" onClick={bookSearchInput}>Search</button>
+                        <button className="button-82-pushable" type="submit" onClick={bookSearchInput}>
+                        <span className="button-82-shadow"></span>
+                            <span className="button-82-edge"></span>
+                            <span className="button-82-front text">
+                            Search
+                            </span>
+                        </button>
                     </form>
-                </div>
-              
-                <label hidden htmlFor="authors">Authors</label>
-                    <select value="author" name="authors" id="authorList" onChange={selectAuthor} aria-label='authorList'>
-                    <option defaultValue={true}>Choose authors</option>
-                        {books.map((item) => {
-                            return (
-                            <option 
-                            key={item.bookID}
-                            value={item.authors}>
-                            {item.authors.replace('-', ', ')}</option>
-                            )
-                        })}
-                    </select>
 
-        </section>
+                    <p>or </p>
+                </div>
+
+              
+                <div className="selectWrapper">
+                    <label hidden htmlFor="authors">Authors</label>
+                        <select value="author" name="authors" id="authorList" onChange={selectAuthor} aria-label='authorList'>
+                        <option defaultValue={true}>Choose authors</option>
+                            {books.map((item) => {
+                                return (
+                                <option 
+                                key={item.bookID}
+                                value={item.authors}>
+                                {item.authors.replace('-', ', ')}</option>
+                                )
+                            })}
+                        </select>
+                </div>
+    
+            </section>
+            </>
+
     }
 
-    {authors.length > 1 ? <AuthorSelect /> : ''}
-    {bookSearchResult.length > 1 ? <BookSearch /> : ''}
+  
+        {authors.length > 1 ? <AuthorSelect /> : ''}
+        {bookSearchResult.length > 1 ? <BookSearch /> : ''}
+
+
     </main>
   )
+
 }
 }

@@ -25,19 +25,20 @@ export const AuthorSelect = () => {
     } else {
 
     return (
-        <div className="authorList">
+        <section className="results">
             {authorList.length > 0 && authorList.map((item) => {
                 return (
-                    <div key={item.isbn}>
+                <article className="searchWrapper" key={item.isbn}>
+                    <div className="details">
                         <h3>{item.title}</h3>
                         <p>Written by: {item.authors.split('-').join(', ')}</p>
                         <p>Rating: {item.average_rating}</p>
                         <p>Pages: {item.num_pages}</p>
                     </div>
+                </article>
                 )
             })}
-        </div>
-
+        </section>
     )
 }
  

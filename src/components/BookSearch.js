@@ -23,18 +23,21 @@ export const BookSearch = () => {
     } else {
 
     return (
-        <div className="bookList">
+
+        <section className="results">
             {bookList.length > 0 && bookList.map((item) => {
                 return (
-                    <div key={item.isbn}>
+                <article className="searchWrapper" key={item.isbn}>
+                    <div className="details">
                         <h3>{item.title}</h3>
                         <p>Written by: {item.authors.split('-').join(', ')}</p>
                         <p>Rating: {item.average_rating}</p>
                         <p>Pages: {item.num_pages}</p>
                     </div>
+                 </article>
                 )
             })}
-        </div>
+        </section>
     )
 }
  
