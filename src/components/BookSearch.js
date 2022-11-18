@@ -31,7 +31,7 @@ export const BookSearch = () => {
                     <div className="details">
                         <h3>{item.title}</h3>
                         <p>Written by: {item.authors.split('-').join(', ')}</p>
-                        <p>Rating: {item.average_rating}</p>
+                        <p>Rating: {item.average_rating} <span>&#9733;</span></p>
                         <p>Pages: {item.num_pages}</p>
                     </div>
                  </article>

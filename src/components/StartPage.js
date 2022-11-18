@@ -43,11 +43,11 @@ if (loading) {
   return (
     <main>
     {books &&
-    <>
+    <section className="container">
             <header>
                 <h1>Welcome to The Little Library. </h1>
                 <p>Search for a book, <br/>
-                or select an author/authors from the dropdown-menu <br/> 
+                or select authors from the dropdown-menu <br/> 
                 to display the books they have written.</p>
             </header>
 
@@ -62,13 +62,7 @@ if (loading) {
                             placeholder="Search book, ex Harry Potter"
                             value={input}
                             onChange={(event) => setInput(event.target.value)} />
-                        <button className="button-82-pushable" type="submit" onClick={bookSearchInput}>
-                        <span className="button-82-shadow"></span>
-                            <span className="button-82-edge"></span>
-                            <span className="button-82-front text">
-                            Search
-                            </span>
-                        </button>
+                        <button type="submit" onClick={bookSearchInput}>Search</button>
                     </form>
 
                     <p>or </p>
@@ -91,17 +85,14 @@ if (loading) {
                 </div>
     
             </section>
-            </>
 
-    }
+    
 
-  
         {authors.length > 1 ? <AuthorSelect /> : ''}
         {bookSearchResult.length > 1 ? <BookSearch /> : ''}
-
-
+        </section>
+        }
     </main>
   )
-
 }
 }
